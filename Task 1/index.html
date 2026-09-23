@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JS Runtime & Async Lab</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Async Lab</h1>
+  <p>Closures, promises and the event loop, run live in your browser.</p>
+</header>
+
+<main>
+  <section>
+    <h2>1. Tasks (closures + promises)</h2>
+    <p class="hint">Each task has its own private counter.</p>
+    <label class="hint">Failure rate: <b id="frv">30%</b> <input type="range" id="fr" min="0" max="100" value="30"></label>
+    <div id="tasks" class="grid"></div>
+    <div class="row">
+      <button id="runAll">Run All Tasks</button>
+      <button id="resetAll" class="ghost">Reset all</button>
+    </div>
+    <p id="allStatus" class="banner"></p>
+  </section>
+
+  <section>
+    <h2>2. Sequential vs concurrent</h2>
+    <p class="hint">Same three tasks, two strategies. Compare the timelines.</p>
+    <button id="compare">Run comparison</button>
+    <div id="bars"></div>
+    <p id="explain" class="banner"></p>
+  </section>
+
+  <section>
+    <h2>3. Event loop demo</h2>
+    <p class="hint">Edit your prediction (one line per log), then run it.</p>
+    <div class="cols">
+      <div>
+        <h3>Expected output</h3>
+        <textarea id="expected" rows="9"></textarea>
+        <button id="runLoop">Run Event Loop Demo</button>
+      </div>
+      <div>
+        <h3>Actual output</h3>
+        <ol id="actual" class="log"></ol>
+        <p id="score" class="banner"></p>
+        <p class="legend"><i class="sync"></i>call stack (sync) <i class="micro"></i>microtask <i class="macro"></i>task (timer)</p>
+      </div>
+    </div>
+    <pre id="code"></pre>
+    <h3>Step through it</h3>
+    <div class="row"><button id="step">Step</button><button id="auto" class="ghost">Auto play</button><button id="rewind" class="ghost">Restart</button></div>
+    <div id="lanes" class="lanes"></div>
+    <p id="note" class="banner"></p>
+    <p id="loopExplain" class="banner"></p>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
