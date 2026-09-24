@@ -1,0 +1,53 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  background: linear-gradient(135deg, #b39bff, #7cc4ff) fixed;
+}
+.page {
+  --card: #fff; --text: #1b1b3a; --soft: #eef1ff; --accent: #6a4bff;
+  color: var(--text); max-width: 1000px; margin: 0 auto; padding: 32px 16px; position: relative;
+}
+.page.dark { --card: #1e1e3f; --text: #f0f0ff; --soft: #2c2c5a; --accent: #b39bff; }
+body:has(.dark) { background: linear-gradient(135deg, #14143c, #2b1f5c) fixed; }
+
+.theme {
+  position: absolute; top: 12px; right: 16px; border: 0; border-radius: 20px;
+  padding: 8px 14px; font-weight: bold; cursor: pointer; background: #fff; color: #1b1b3a;
+}
+.header { text-align: center; color: #fff; margin-bottom: 28px; }
+.header img {
+  width: 170px; height: 170px; object-fit: cover; border-radius: 50%;
+  border: 5px solid #fff; box-shadow: 0 8px 24px rgba(0,0,0,.3); transition: transform .3s;
+}
+.header img:hover { transform: rotate(-6deg) scale(1.06); }
+.header h1 { margin: 14px 0 4px; font-size: 2.5rem; }
+.badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+.badges span { background: rgba(255,255,255,.25); padding: 4px 12px; border-radius: 20px; font-size: .9rem; }
+
+.card {
+  background: var(--card); border-radius: 16px; padding: 20px 24px; margin-bottom: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18); transition: transform .2s;
+}
+.card:hover { transform: translateY(-4px); }
+.card h2 { margin-top: 0; }
+.card ul { padding-left: 20px; }
+a { color: var(--accent); font-weight: bold; }
+
+.skill { margin-bottom: 12px; }
+.skill-top { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 4px; }
+.bar { height: 12px; background: var(--soft); border-radius: 8px; overflow: hidden; }
+.bar span { display: block; height: 100%; width: var(--w); border-radius: 8px; background: linear-gradient(90deg, #6a4bff, #4bc0ff); animation: grow 1.2s ease-out; }
+@keyframes grow { from { width: 0; } }
+
+.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+.project { display: flex; flex-direction: column; gap: 4px; padding: 14px; border-radius: 12px; background: var(--soft); text-decoration: none; color: var(--text); transition: transform .2s; }
+.project:hover { transform: scale(1.03) rotate(-.5deg); }
+.project b { color: var(--accent); }
+
+.fact { min-height: 3em; font-size: 1.1rem; animation: pop .35s; }
+@keyframes pop { from { opacity: 0; transform: translateY(8px); } }
+.card button { border: 0; border-radius: 20px; padding: 10px 18px; font-weight: bold; cursor: pointer; background: var(--accent); color: #fff; transition: transform .15s; }
+.card button:hover { transform: scale(1.06); }
+
+footer { text-align: center; color: #fff; opacity: .85; padding: 8px 0; }
