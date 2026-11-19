@@ -1,0 +1,202 @@
+*, *::before, *::after { box-sizing: border-box; }
+html, body { max-width: 100%; overflow-x: hidden; }
+img, video, canvas { max-width: 100%; height: auto; }
+.table-wrap, .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+.net-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px; border-radius: 999px;
+  font-size: 12px; font-weight: 600; line-height: 1;
+  background: rgba(255,255,255,.08); color: #d6d6d6; width: fit-content;
+}
+.net-dot { width: 8px; height: 8px; border-radius: 50%; background: #1db954; }
+.net-badge.offline { color: #ffb4ab; background: rgba(255,90,90,.14); }
+.net-badge.offline .net-dot { background: #ff5a5a; }
+.net-badge.compact { margin-left: auto; }
+.sidebar > .net-badge { margin: 4px 16px 8px; }
+
+.pwa-stack {
+  position: fixed; z-index: 300; 
+  top: calc(var(--ticker-h) + 12px); 
+  left: 12px; right: 12px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  max-width: 600px; margin: 0 auto; pointer-events: none;
+}
+.pwa-stack > * { pointer-events: auto; width: 100%; }
+
+.pwa-stack .connectivity-indicator,
+.pwa-stack .update-prompt,
+.pwa-stack .install-prompt {
+  position: static !important; width: 100%; margin: 0;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 12px;
+  padding: 12px 16px; border-radius: 12px;
+  background: rgba(30, 30, 30, 0.95); 
+  backdrop-filter: blur(10px);
+  color: #f5f5f5;
+  border: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,.5); 
+  font-size: 14px;
+}
+
+.pwa-stack .connectivity-indicator { border-left: 4px solid #ff5a5a; }
+.pwa-stack .connectivity-indicator.cached { border-left: 4px solid #ffc83c; }
+.pwa-stack .update-prompt, .pwa-stack .install-prompt { border-left: 4px solid #1db954; }
+
+.connectivity-dot { width: 10px; height: 10px; border-radius: 50%; background: #ff5a5a; flex: none; }
+.connectivity-indicator.cached .connectivity-dot { background: #ffc83c; }
+.connectivity-text, .update-text, .install-text { flex: 1 1 180px; min-width: 0; line-height: 1.4; }
+
+.pwa-stack .connectivity-link {
+  background: rgba(255,255,255,0.1); border: 0; border-radius: 6px; color: #fff; font: inherit; font-weight: 600;
+  text-decoration: none; cursor: pointer; min-height: 36px; padding: 0 12px;
+  display: inline-flex; align-items: center; transition: background 0.2s;
+}
+.pwa-stack .connectivity-link:hover { background: rgba(255,255,255,0.2); }
+.pwa-stack .btn { min-height: 36px; padding: 0 16px; font-size: 13px; border-radius: 6px; }
+.pwa-stack .btn-primary { background: #1db954; color: #000; border: none; }
+.pwa-stack .btn-primary:hover { background: #1ed760; box-shadow: none; transform: none; }
+
+.update-actions, .install-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+
+.offline-view { 
+  display: grid; 
+  place-items: center; 
+  min-height: 60dvh; 
+  padding: 24px 16px; 
+}
+.offline-card {
+  width: 100%; 
+  max-width: 480px; 
+  text-align: center; 
+  padding: 44px 32px;
+  background: var(--ink-2);
+  color: var(--cream);
+  border: 3px solid var(--cream);
+  border-radius: 32px;
+  box-shadow: 12px 12px 0 var(--coral);
+  animation: pop 0.5s cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+.offline-icon { 
+  font-size: 72px; 
+  line-height: 1;
+  margin-bottom: 24px; 
+  animation: bob 3s ease-in-out infinite;
+}
+
+.offline-card .view-title {
+  font-family: var(--display);
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  text-shadow: 0.04em 0.04em 0 var(--coral);
+  word-break: break-word;
+}
+
+.offline-card .view-sub {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--fg-muted);
+  margin: 0 auto 28px;
+  max-width: 36ch;
+}
+.offline-retry { 
+  min-height: 48px; 
+  padding: 0 32px;
+  border: 2px solid var(--ink);
+  font-size: 14px;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.offline-retry:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.offline-status { 
+  margin: 18px 0 0; 
+  font-size: 13px; 
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--fg-muted); 
+}
+
+
+.mobile-topbar, .sidebar-backdrop { display: none; }
+body.nav-open { overflow: hidden; }
+
+@media (max-width: 900px) {
+  .app-shell { display: block !important; min-height: 100dvh; }
+
+  .pwa-stack {
+    top: auto;
+    bottom: max(16px, env(safe-area-inset-bottom));
+  }
+
+  .mobile-topbar {
+    position: sticky; top: 0; z-index: 60;
+    display: flex; align-items: center; gap: 12px;
+    min-height: 56px; padding: env(safe-area-inset-top) 12px 0;
+    background: #191414; border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .menu-toggle {
+    width: 44px; height: 44px; display: grid; place-items: center; flex: none;
+    border: 0; border-radius: 10px; background: transparent; color: #f5f5f5; cursor: pointer;
+  }
+  .menu-toggle:active { background: rgba(255,255,255,.1); }
+  .mobile-brand {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-weight: 800; letter-spacing: .12em; font-size: 15px;
+  }
+
+  .sidebar {
+    position: fixed !important; top: 0; bottom: 0; left: 0;
+    width: min(82vw, 300px) !important; height: 100dvh !important;
+    z-index: 80; overflow-y: auto; overscroll-behavior: contain;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+    transform: translateX(-100%); visibility: hidden;
+    transition: transform .22s ease, visibility 0s linear .22s;
+  }
+  .sidebar.open { transform: none; visibility: visible; transition: transform .22s ease; }
+  .sidebar-backdrop {
+    display: block; position: fixed; inset: 0; z-index: 70;
+    background: rgba(0,0,0,.6); opacity: 0; pointer-events: none; transition: opacity .2s;
+  }
+  .sidebar-backdrop.show { opacity: 1; pointer-events: auto; }
+  .nav-item, .sidebar-user, .sidebar-auth .btn, .sidebar-exit { min-height: 48px; }
+
+  .main-area {
+    margin-left: 0 !important; width: 100% !important; max-width: 100%;
+    height: auto !important; overflow: visible !important;
+    padding-left: max(14px, env(safe-area-inset-left));
+    padding-right: max(14px, env(safe-area-inset-right));
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+  .demo-banner { flex-wrap: wrap; gap: 6px 10px; }
+}
+
+@media (pointer: coarse), (max-width: 900px) {
+  .btn, button, select, input:not([type="checkbox"]):not([type="radio"]), textarea { min-height: 44px; }
+  input, select, textarea { font-size: 16px; }
+  .btn-sm { min-height: 44px; padding-inline: 14px; }
+}
+
+@media (max-width: 480px) {
+  .pwa-stack { left: 8px; right: 8px; }
+  .offline-card { padding: 24px 16px; }
+  h1, .view-title { font-size: clamp(22px, 7vw, 30px); overflow-wrap: anywhere; }
+  .pwa-stack .update-actions, .pwa-stack .install-actions { width: 100%; }
+  .pwa-stack .update-actions .btn, .pwa-stack .install-actions .btn { flex: 1; }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+  .mobile-topbar { min-height: 48px; }
+  .menu-toggle { height: 40px; }
+  .offline-view { min-height: auto; padding: 12px; }
+  .offline-card { padding: 16px; }
+  .offline-icon { font-size: 32px; margin-bottom: 4px; }
+  .main-area { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+}
