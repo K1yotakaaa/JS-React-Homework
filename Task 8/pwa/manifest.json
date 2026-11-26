@@ -1,0 +1,35 @@
+{
+  "name": "Tunescape - Your Year in Music, Anytime",
+  "short_name": "Tunescape",
+  "description": "Explore your top tracks, audio features, favorites, and reports.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "lang": "en",
+  "categories": ["music", "entertainment"],
+  "theme_color": "#191414",
+  "background_color": "#191414",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+    "screenshots": [
+    {
+      "src": "/screenshots/desktop.png",
+      "sizes": "1149x991",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Tunescape Desktop Dashboard"
+    },
+    {
+      "src": "/screenshots/mobile.png",
+      "sizes": "1290x2796",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Tunescape Mobile View"
+    }
+  ]
+}
